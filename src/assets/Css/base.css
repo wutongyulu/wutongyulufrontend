@@ -1,11 +1,20 @@
 
 
+.loading /deep/ .el-loading-text {
+  
+    color: rgba(235, 55, 115, 1);
+  }
+.loading /deep/ .path {
+    stroke: rgb(235, 55, 115);
+   
+  }
+  
 
 *::-webkit-scrollbar {
     /*滚动条整体样式*/
     width: 10px;
     /*高宽分别对应横竖滚动条的尺寸*/
-    height: 8px;
+    height:1px;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -23,7 +32,14 @@
     border-radius: 10px;
 }
 
-body{
+body /deep/ .el-main {
+    /* width: 100%; */
     margin: 0;
     padding: 0;
 }
+body {
+    /* width: 100%; */
+    margin: 0;
+    padding: 0;
+}
+

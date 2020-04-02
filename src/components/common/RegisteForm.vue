@@ -58,15 +58,19 @@
       ></el-input>
     </div>
 
-    <el-button
-      type="success"
-      class="bt-registe"
-      @click="registeUser"
-      v-loading="this.$store.state.requestStatus"
-      v-show="!this.$store.state.requestStatus"
-      element-loading-text="Loading..."
-      element-loading-background="rgba(0,0,0,0)"
-    >注册</el-button>
+    <div class="loading">
+      <div
+        v-loading="this.$store.state.requestStatus "
+        element-loading-text="Loading..."
+        element-loading-background="rgba(0,0,0,0)"
+      ></div>
+      <el-button
+        type="success"
+        class="bt-registe"
+        @click="registeUser"
+        v-show="!this.$store.state.requestStatus"
+      >注册</el-button>
+    </div>
     <router-link to="/home">
       <el-link class="el-link" style="color:Rgb(68,157,68) ;">首页</el-link>
     </router-link>
@@ -149,6 +153,10 @@ export default {
 </script>
 
 <style>
+.loading {
+  padding-top: 20px;
+}
+
 .el-link {
   display: inline-block;
   margin: 25px 12px;

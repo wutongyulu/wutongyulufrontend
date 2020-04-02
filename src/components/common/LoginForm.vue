@@ -31,11 +31,17 @@
     </div>
     <br />
 
+    <div class="loading">
+      <div
+        v-loading="this.$store.state.requestStatus"
+        element-loading-text="Loading..."
+        element-loading-background="rgba(0,0,0,0)"
+      ></div>
+    </div>
     <el-button
       type="success"
       class="bt-login"
       @click="clickLogin"
-      v-loading="this.$store.state.requestStatus"
       v-show="!this.$store.state.requestStatus"
     >登录</el-button>
 
@@ -78,6 +84,10 @@ export default {
 </script>
 
 <style scoped>
+.loading{
+  padding-left: 200px;
+}
+
 .el-link {
   display: inline-block;
   margin: 6px 12px;

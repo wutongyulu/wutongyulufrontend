@@ -25,20 +25,18 @@
        <el-col :xs="24" :sm="0" :md="2">  <br> </el-col>
       </el-row>
     </el-main>
-    <el-footer>
-      <Footer></Footer>
-    </el-footer>
+  
   </el-container>
 </template>
 
 <script>
 import LoginForm from "../components/common/LoginForm";
-import Footer from "../components/common/Footer";
+
 export default {
   name: "Login",
   components: {
     LoginForm,
-    Footer
+    
   }
 };
 </script>

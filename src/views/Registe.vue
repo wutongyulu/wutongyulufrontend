@@ -21,21 +21,19 @@
         </el-col>
       </el-row>
     </el-main>
-    <el-footer>
-      <Footer></Footer>
-    </el-footer>
+ 
   </el-container>
 </template>
 
 <script>
 import RegisteForm from "../components/common/RegisteForm";
-import Footer from "../components/common/Footer";
+
 
 export default {
   name: "Registe",
   components: {
     RegisteForm,
-    Footer
+   
   }
 };
 </script>

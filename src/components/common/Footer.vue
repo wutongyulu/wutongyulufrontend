@@ -31,5 +31,6 @@ export default {
 #bottomBeian {
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 </style>
