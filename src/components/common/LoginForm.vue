@@ -11,7 +11,7 @@
         prefix-icon="el-icon-user"
         class="el-input"
         placeholder="Email"
-        v-model="user.email"
+        v-model="user.name"
         id="exampleInputEmail1"
         clearable
       ></el-input>
@@ -68,9 +68,9 @@ export default {
   name: "LoginForm",
   data() {
     return {
-      user: {
-        email: "",
-        password: ""
+      user:{
+        name:"",
+        password:""
       }
     };
   },

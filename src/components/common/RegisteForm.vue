@@ -10,7 +10,7 @@
         type="text"
         class="el-input"
         id="exampleInputUserName"
-        v-model="user.userName"
+        v-model="user.name"
         placeholder="登录名/User"
         prefix-icon="el-icon-user"
         clearable
@@ -35,7 +35,7 @@
       <el-input
         type="password"
         class="el-input"
-        v-model="user.rePassword"
+        v-model="rePassword"
         @blur="verifypassword"
         id="exampleInputPassword2"
         placeholder="确认密码/RePassword"
@@ -64,6 +64,7 @@
         element-loading-text="Loading..."
         element-loading-background="rgba(0,0,0,0)"
       ></div>
+      {{$store.state.registeMessage}}
       <el-button
         type="success"
         class="bt-registe"
@@ -86,15 +87,16 @@ export default {
   data() {
     return {
       user: {
-        userName: "",
+        name: "",
         password: "",
-        rePassword: "",
         email: ""
       },
+      rePassword: "",
       bn: false
     };
   },
   methods: {
+    //验证表单
     verifyMessage(Message) {
       this.$notify.error({
         title: "梧桐：",
@@ -104,16 +106,16 @@ export default {
         dangerouslyUseHTMLString: true
       });
     },
+
+    //注册用户
     registeUser() {
       if (
         this.user.userName == "" &&
         this.user.password == "" &&
-        this.user.rePassword == "" &&
+        this.rePassword == "" &&
         this.user.email == ""
       ) {
-        this.verifyMessage(
-          "<span style='padding-left:40px;'>?(示意敌人不见踪影)</span>"
-        );
+        this.verifyMessage("<span style='padding-left:40px;'>?</span>");
       } else if (this.user.userName == "") {
         this.verifyMessage(
           "<span style='padding-left:40px;'>用户名不可以为空！</span>"
@@ -122,7 +124,7 @@ export default {
         this.verifyMessage(
           "<span style='padding-left:40px;'>密码也不可以为空！</span>"
         );
-      } else if (this.user.rePassword == "") {
+      } else if (this.rePassword == "") {
         this.verifyMessage(
           "<span style='padding-left:40px;'>确认密码一样不可以为空！</span>"
         );
@@ -135,8 +137,8 @@ export default {
       }
     },
     verifypassword() {
-      if (this.user.password != "" && this.user.rePassword != "") {
-        if (this.user.password == this.user.rePassword ? false : true) {
+      if (this.user.password != "" && this.rePassword != "") {
+        if (this.user.password == this.rePassword ? false : true) {
           this.$notify.error({
             title: "梧桐：",
             message:
@@ -174,9 +176,11 @@ label {
   font-weight: 600;
   font-size: 14px;
 }
-.el-input {
+
+.el-input  {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
   margin-bottom: 20px;
+  outline: none;
 }
 
 h1 {

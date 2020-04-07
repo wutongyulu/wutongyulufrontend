@@ -325,4 +325,6 @@ export default {
   border-bottom: rgba(102, 102, 102, 0.2) dashed 1px;
   padding-bottom: 10px;
 }
+
+
 </style>

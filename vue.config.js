@@ -2,25 +2,31 @@ const webpack = require("webpack");
 
 module.exports = {
 
+
+    devServer: {
+        port: 80,     // 端口
+    },
+    lintOnSave: false ,  // 取消 eslint 验证
+    
   configureWebpack: {
 
-    plugins: [
+        plugins: [
 
-      new webpack.ProvidePlugin({
+            new webpack.ProvidePlugin({
 
-        $: 'jquery',
+                $: 'jquery',
 
-        jQuery: 'jquery',
+                jQuery: 'jquery',
 
-        'window.jQuery': 'jquery',
+                'window.jQuery': 'jquery',
 
-        Popper: ['popper.js', 'default']
+                Popper: ['popper.js', 'default']
 
-      })
+            })
 
-    ]
+        ]
 
-  }
+    }
 
 }
 

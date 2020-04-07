@@ -1,5 +1,5 @@
 <template>
-  <el-container >
+  <el-container id="body" >
     <el-main style="padding:0px;">
       <el-row>
         <el-col :xs="24" :sm="12" :md="9" class='hidden-xs-only' >
@@ -38,8 +38,8 @@ export default {
 };
 </script>
 
-<style>
-body {
+<style scoped>
+#body {
   /* background-color: rgb(203, 234, 241); */
   background-color: rgb(245, 245, 245);
 }

@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container id="body">
     <el-main id="row">
       <el-row>
         <el-col :xs="24" :sm="2" :md="2">  <br>
@@ -12,7 +12,7 @@
             <LoginForm>
               <a
                 slot="disanfangdenglu"
-                href="https://github.com/login/oauth/authorize?client_id=8f1215e906031a87e2bd&redirect_uri=http://127.0.0.1:5500/callback&scope=user&state=1"
+                href="https://github.com/login/oauth/authorize?client_id=8f1215e906031a87e2bd&redirect_uri=http://localhost/callback&scope=user&state=1"
               >
                 <img src="../assets/Img/Github.jpg" alt="使用Github登录" />
               </a>
@@ -49,7 +49,7 @@ export default {
   padding-bottom: 0px;
 }
 
-body {
+#body {
   background-color: rgb(245, 245, 245);
 }
 </style>

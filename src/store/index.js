@@ -13,7 +13,7 @@ Vue.use(Vuex)
 const store =  new Vuex.Store({
     state:{
         requestStatus:false,
-    
+        registeMessage:"",
     },
     getters,
     mutations,

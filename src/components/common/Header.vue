@@ -2,7 +2,9 @@
   <header class="header">
     <div id="progress"></div>
     <div id="logodiv">
-      <router-link to="/home"><img src="../../assets/Img/logo粉.png" class="logoImg logo" /></router-link>
+      <router-link to="/home">
+        <img src="../../assets/Img/logo粉.png" class="logoImg logo" />
+      </router-link>
 
       <router-link to="/home" id="logoName" class="hidden-sm-and-down">梧桐与鹿</router-link>
     </div>
@@ -20,7 +22,19 @@
         <router-link class="a el-icon-s-flag" to="/home">关于</router-link>
       </li>
       <li>
-        <router-link class="a el-icon-user-solid" to="/login">登录</router-link>
+        <router-link
+          class="a el-icon-user-solid"
+          to="/login"
+          v-if="this.$store.state.userDto == null || this.$store.state.userDto == ''"
+        >登录</router-link>
+
+        <div class="userMessage" v-else>
+         {{$store.state.userDto.name}} <el-avatar :size="40" ></el-avatar>
+          <div class="userMessageDiv">
+            <div>个人中心</div>
+            <div>注销</div>
+          </div>
+        </div>
       </li>
     </ul>
   </header>
@@ -34,6 +48,7 @@ export default {
 window.addEventListener("scroll", () => {
   var header = document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY > 0);
+ 
 });
 window.addEventListener("scroll", () => {
   // 页面总高
@@ -50,23 +65,70 @@ window.addEventListener("scroll", () => {
     var result = parseInt(((scrollH / validH) * 100).toFixed(2));
 
     var progress = document.querySelector("#progress");
-    progress.style.width = result+"%";
-    
+    progress.style.width = result + "%";
   });
 });
 </script>
  
 <style>
+
+
+.header:hover .userMessage{
+  color: rgb(128,128,128);
+}
+
+.userMessage {
+  width: 120px;
+  height: 50px;
+  color: white;
+  font-size: 18px;
+}
+.userMessage>div{
+  display:none;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid white;
+
+}
+.userMessageDiv:hover{
+  border: 1px solid rgba(238,164,171,0.7);
+}
+.userMessage:hover .userMessageDiv{
+  display: block;
+}
+.userMessage div div{
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  color: rgb(128, 128, 128);
+}
+.userMessage:hover .userMessageDiv div{
+  padding: 15px;
+  background: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+
 #progress {
   position: absolute;
   width: 0px;
   height: 3px;
   top: 0;
-  background-color: rgb(255,122,149);
-  transition: width  1s ease-out;
+  background-color: rgb(255, 122, 149);
+  transition: width 1s ease-out;
 }
 
-@media screen and (min-width: 100px) and (max-width: 400px) {
+@media screen and (min-width: 100px) and (max-width: 700px) {
+  .a{
+    margin-right: 8px!important;
+    font-size: 14px!important;
+  }
+  #logodiv{
+    display: none!important;
+  }
+  .userMessage{
+    width: 80px;
+    font-size: 14px;
+  }
 }
 
 #logodiv {
@@ -106,6 +168,9 @@ window.addEventListener("scroll", () => {
 .sticky .a {
   color: grey;
 }
+.sticky .userMessage{
+  color: grey;
+}
 
 .header:hover {
   background: white;
@@ -128,7 +193,7 @@ header {
   align-items: center;
   transition: 0.6s;
 
-  z-index: 1;
+  z-index: 10;
 }
 
 header ul {
@@ -136,7 +201,7 @@ header ul {
   display: flex;
   justify-content: center;
   align-items: center;
-   z-index: 1;
+  z-index: 1;
 }
 
 header ul li {
