@@ -29,7 +29,10 @@
         <el-col :xs="24" :sm="20" :md="12">
           <!-- 文档 -->
           <div class="Docm">
-            {{$store.state.documentById.description}}
+
+            <div class="mavonEditor">
+            <mavon-editor v-html="$store.state.documentById.document"/>
+            </div>
 
           </div>
           <!-- 标签 -->
@@ -105,6 +108,8 @@
 </template>
 
 <script>
+import marked from 'marked';  
+
 export default {
   name: "BlogDocm"
 };

@@ -6,8 +6,8 @@ export default {
         },
         
         //文档计数
-        updateDocumentSize(state) {
-                state.DocumentSize += 10;
+        updateDocumentStart(state) {
+                state.documentStart += 10;
 
         },
 

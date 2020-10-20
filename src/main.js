@@ -8,11 +8,18 @@ import 'font-awesome/css/font-awesome.min.css'
 import 'element-ui/lib/theme-chalk/display.css';
 import './assets/Css/base.css';
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.use(mavonEditor)
 
 new Vue({
   router,
   store,
-  render: h => h(App),
+  render: h => {
+    console.log(App);
+    return h(App)
+  },
 }).$mount('#app')

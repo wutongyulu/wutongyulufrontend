@@ -4,7 +4,7 @@ import store from '@/store'
 export function request(config){
  const request = axios.create({
     //  baseURL:'http://localhost:8080',
-    //  baseURL:'http://www.wutongyulu.com:8080',
+     baseURL:'http://localhost:8095/',
     //测试
     //  baseURL:'https://autumnfish.cn',
      timeout:30000

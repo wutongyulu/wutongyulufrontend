@@ -99,48 +99,48 @@
           </div>
           <div v-for="itme in $store.state.document">
             <div v-for="itme2 in itme">
-              <PageMessageCardRightImg v-if="itme2.document_id%2 == 0">
+              <PageMessageCardRightImg v-if="itme2.id%2 == 0">
                 <!-- //标题 -->
-                <h3 slot="tilte" @click="blogDocm(itme2.document_id)">{{itme2.title}}</h3>
+                <h3 slot="tilte" @click="blogDocm(itme2.id)">{{itme2.title}}</h3>
                 <!-- 更新时间 -->
-                <span slot="createtime">{{itme2.gmt_modified}}</span>
+                <span slot="createtime">{{itme2.updateTime}}</span>
                 <!-- 评论数 -->
                 <span slot="comment" >{{itme2.comment_count}}</span>
                 <!-- 点击数 -->
-                <span slot="view">{{itme2.view_count}}</span>
+                <span slot="view">{{itme2.viewCount}}</span>
                 <!-- 内容 -->
-                <p slot="Message" @click="blogDocm(itme2.document_id)">{{itme2.description}}</p>
+                <p slot="Message" @click="blogDocm(itme2.id)">{{itme2.document}}</p>
                 
-                <a href="javascript:" slot="bottomA"  @click="blogDocm(itme2.document_id)" class="newPageA newPageAB">...</a>
+                <a href="javascript:" slot="bottomA"  @click="blogDocm(itme2.id)" class="newPageA newPageAB">...</a>
                 <!-- 图片 -->
                 <img
                   src="../assets/Img/BG3.jpg"
                   slot="img"
                   class="img-responsive"
                   alt="Responsive image"
-                  @click="blogDocm(itme2.document_id)"
+                  @click="blogDocm(itme2.id)"
                 />
               </PageMessageCardRightImg>
               <PageMessageCardLeftImg v-else>
                 <!-- //标题 -->
-                <h3 slot="tilte"  @click="blogDocm(itme2.document_id)" >{{itme2.title}}</h3>
+                <h3 slot="tilte"  @click="blogDocm(itme2.id)" >{{itme2.title}}</h3>
                 <!-- 更新时间 -->
-                <span slot="createtime">{{itme2.gmt_modified}}</span>
+                <span slot="createtime">{{itme2.updateTime}}</span>
                 <!-- 评论数 -->
                 <span slot="comment">{{itme2.comment_count}}</span>
                 <!-- 点击数 -->
-                <span slot="view">{{itme2.view_count}}</span>
+                <span slot="view">{{itme2.viewCount}}</span>
                 <!-- 内容 -->
-                <p slot="Message"  @click="blogDocm(itme2.document_id)">{{itme2.description}} </p>
+                <p slot="Message"  @click="blogDocm(itme2.id)">{{itme2.document}} </p>
 
-                  <a href="javascript:" slot="bottomA"  @click="blogDocm(itme2.document_id)" class="newPageA newPageAB">...</a>
+                  <a href="javascript:" slot="bottomA"  @click="blogDocm(itme2.id)" class="newPageA newPageAB">...</a>
                 <!-- 图片 -->
                   <img
                   src="../assets/Img/BG3.jpg"
                   slot="img"
                   class="img-responsive"
                   alt="Responsive image"
-                  @click="blogDocm(itme2.document_id)"
+                  @click="blogDocm(itme2.id)"
                 />
               </PageMessageCardLeftImg>
             </div>
@@ -172,8 +172,6 @@ export default {
   },
   methods: {
     getDocument: function() {
-      console.log("getDocument");
-
       this.$store.dispatch("getDocument");
     },
     blogDocm: function(id) {
@@ -182,24 +180,24 @@ export default {
   },
   //箭头函数不能使用
   created: function() {
-    //在页面加载时读取sessionStorage里的状态信息
-    if (sessionStorage.getItem("store")) {
-      this.$store.replaceState(
-        Object.assign(
-          {},
-          this.$store.state,
-          JSON.parse(sessionStorage.getItem("store"))
-        )
-      );
-    } else {
-      this.getDocument();
-    }
+    // //在页面加载时读取sessionStorage里的状态信息
+    // if (sessionStorage.getItem("store")) {
+    //   // this.$store.replaceState(
+    //   //   Object.assign(
+    //   //     {},
+    //   //     this.$store.state,
+    //   //     JSON.parse(sessionStorage.getItem("store"))
+    //   //   )
+    //   // );
+    // } else {
+    //   this.getDocument();
+    // }
 
     //在页面刷新时将vuex里的信息保存到sessionStorage里
-    window.addEventListener("beforeunload", () => {
-      sessionStorage.removeItem("store");
-      sessionStorage.setItem("store", JSON.stringify(this.$store.state));
-    });
+    // window.addEventListener("beforeunload", () => {
+    //   sessionStorage.removeItem("store");
+    //   sessionStorage.setItem("store", JSON.stringify(this.$store.state));
+    // });
   }
 };
 </script>

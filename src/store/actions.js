@@ -5,7 +5,7 @@ import store from '@/store'
 export default {
     getDocumentById(context,id){
         request({
-            url:"/apis/selectDocumentById",
+            url:"/apis/queryDocumentById",
             method:"get",
             params:{
                 id:id,
@@ -34,16 +34,16 @@ export default {
 //添加文档
 createBlog(context,data){
     request({
-        url:"/apis/createdBlog",
+        url:"document/saveDocument",
         method:"post",
         data:{
             title:data.title,
-            description:data.textarea,
-            tags:tag
+            document:data.document,
+            classify:classify
         }
     }).then((result)=>{
         if(result=="success"){
-            router.push("/home");
+            // router.push("/home");
         }
     },(err)=>{
 
@@ -53,18 +53,19 @@ createBlog(context,data){
 
     //文档查询
     getDocument(context) {
-        console.log('getdocument');
         request({
-            url: "/apis/selectDocument",
+            url: "document/queryDocuments",
             method: "get",
             params:{
-                documentSize : store.state.documentSize,
+                start : store.state.documentStart,
             }
         }
         ).then((result) => {
+
+            console.log(result.content);
             if(result != "" && result != undefined){
-                context.commit("getDocument",result);
-                context.commit("updateDocumentSize");
+                context.commit("getDocument",result.content);
+                context.commit("updateDocumentStart");
             }
         }, (err) => {
             alert("查询失败")
@@ -80,7 +81,7 @@ createBlog(context,data){
     registeUser(context, user) {
         console.log(user);
         request({
-            url: "/apis/user",
+            url: "/user",
             method: "post",
             data: {
                 name: user.name,
@@ -132,7 +133,7 @@ createBlog(context,data){
     //登录验证功能
     verifyUser(context, user) {
         request({
-            url: "/apis/user",
+            url: "/user",
             //测试接口
             // url: "/search?keywords=勾指起誓",
             method: "get",

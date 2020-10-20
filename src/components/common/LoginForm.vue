@@ -78,8 +78,6 @@ export default {
   methods: {
     clickLogin() {
       //验证登录
-      console.log("验证登录");
-      
       this.$store.dispatch("verifyUser", this.user);
     }
   },
