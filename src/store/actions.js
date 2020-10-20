@@ -81,6 +81,7 @@ createBlog(context,data){
     registeUser(context, user) {
         console.log(user);
         request({
+<<<<<<< HEAD
             url: "/user",
             method: "post",
             data: {
@@ -98,9 +99,34 @@ createBlog(context,data){
                     store.state.registeMessage = ""
                 }, 2000);
             }
+=======
+            url:"/UserInfo/saveUserInfo",
+            method: "post",
+            data: {
+                 username:user.email,
+                 password:user.password,
+                 name:user.username
+            },
+           
+        }).then(result=>{
+        console.log(result);
+                if(result.code == 200){
+                   store.state.registeMessage = "注册成功，正在跳转"
+                   setTimeout(() => {
+                    router.push("/login");
+                    store.state.registeMessage = ""
+                   }, 2000);
+                }else {
+                    store.state.registeMessage = result.message;
+                }
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
 
         }).catch(err => {
             console.log(err);
+<<<<<<< HEAD
+=======
+        })
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
 
         })
 

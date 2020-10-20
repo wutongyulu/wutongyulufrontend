@@ -3,8 +3,13 @@ import store from '@/store'
 // 封装的请求发送更利于维护后期
 export function request(config){
  const request = axios.create({
+<<<<<<< HEAD
     //  baseURL:'http://localhost:8080',
      baseURL:'http://localhost:8095/',
+=======
+     baseURL:'http://localhost:8095',
+    //  baseURL:'http://www.wutongyulu.com:8080',
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
     //测试
     //  baseURL:'https://autumnfish.cn',
      timeout:30000

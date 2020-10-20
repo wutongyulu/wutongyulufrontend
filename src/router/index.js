@@ -24,7 +24,11 @@ const routes = [
     path:"/blogDocm",
     component:BlogDocm,
     meta:{
+<<<<<<< HEAD
         title:"BlogDocm ！"
+=======
+        title:"BlogDocm "
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
     }
 },
 
@@ -34,7 +38,11 @@ const routes = [
         path:"/registe",
         component:Registe,
         meta:{
+<<<<<<< HEAD
             title:"Registe！"
+=======
+            title:"Registe-！"
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
         }
 
     },
@@ -44,7 +52,7 @@ const routes = [
         path:"/login",
         component:Login,
         meta:{
-            title:"Login-登录！"
+            title:"Login-登录"
         }
 
     },

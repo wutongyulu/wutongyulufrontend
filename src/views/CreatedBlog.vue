@@ -31,6 +31,7 @@
                       class="titleText"
                       id="exampleInputTitle"
                       placeholder="输入标题..."
+<<<<<<< HEAD
                       v-model="document.title"
                     />
                   </el-col>
@@ -39,6 +40,15 @@
                       <option value="0">Java</option>
                       <option value="1">Web</option>
                       <option value="2">其他</option>
+=======
+                    />
+                  </el-col>
+                  <el-col :xs="6" :sm="6" :md="6">
+                    <select class="bt-fl">
+                      <option value="0">Java</option>
+                      <option value="1">Sql</option>
+                      <option value="2">Spring</option>
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
                     </select>
                   </el-col>
                 </el-row>
@@ -47,7 +57,11 @@
                   <h4 for="textarea">
                     <small class="el-icon-message"></small> 内容编写
                   </h4>
+<<<<<<< HEAD
                   <mavon-editor v-model="document.document" />
+=======
+                    <mavonEditor/>
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
                 </div>
 
                 <el-col>

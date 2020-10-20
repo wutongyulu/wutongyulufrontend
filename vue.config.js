@@ -4,6 +4,7 @@ module.exports = {
 
 
     devServer: {
+<<<<<<< HEAD
         port: 80,     // 端口
             proxy: {
                 '/apis': {     //这里最好有一个 /
@@ -17,6 +18,9 @@ module.exports = {
                 }
             }
           
+=======
+        port: 8096,     // 端口
+>>>>>>> e37979a882718890e37543c40a85f1bac0e9d753
     },
     lintOnSave: false ,  // 取消 eslint 验证
 
