@@ -10,7 +10,7 @@
         type="text"
         class="el-input"
         id="exampleInputUserName"
-        v-model="user.name"
+        v-model="user.username"
         placeholder="登录名/User"
         prefix-icon="el-icon-user"
         clearable
@@ -52,7 +52,7 @@
         class="el-input"
         v-model="user.email"
         id="exampleInputEmail2"
-        placeholder="邮箱/Email"
+        placeholder="邮箱/Email/此字段作为登录凭证"
         prefix-icon="el-icon-emial"
         clearable
       ></el-input>
@@ -87,7 +87,7 @@ export default {
   data() {
     return {
       user: {
-        name: "",
+        username: "",
         password: "",
         email: ""
       },
@@ -126,11 +126,11 @@ export default {
         );
       } else if (this.rePassword == "") {
         this.verifyMessage(
-          "<span style='padding-left:40px;'>确认密码一样不可以为空！</span>"
+          "<span style='padding-left:40px;'>确认密码不可以为空！</span>"
         );
       } else if (this.user.email == "") {
         this.verifyMessage(
-          "<span style='padding-left:40px;'>邮箱还是不不不可以为空！</span>"
+          "<span style='padding-left:40px;'>邮箱不可以为空！</span>"
         );
       } else {
         this.$store.dispatch("registeUser", this.user);
@@ -142,7 +142,7 @@ export default {
           this.$notify.error({
             title: "梧桐：",
             message:
-              "<span style='padding-left:40px;'>两次密码是不同的的！</span>",
+              "<span style='padding-left:40px;'>两次密码是不同的的</span>",
             offset: 150,
             duration: 10000,
             dangerouslyUseHTMLString: true

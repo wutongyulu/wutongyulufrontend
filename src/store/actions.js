@@ -8,27 +8,28 @@ export default {
     registeUser(context,user) {
         console.log(user);
         request({
-            url:"/user",
+            url:"/UserInfo/saveUserInfo",
             method: "post",
             data: {
-                 name:user.name,
+                 username:user.email,
                  password:user.password,
-                 email:user.email
+                 name:user.username
             },
            
         }).then(result=>{
         console.log(result);
-                if(result == 1){
+                if(result.code == 200){
                    store.state.registeMessage = "注册成功，正在跳转"
                    setTimeout(() => {
                     router.push("/login");
                     store.state.registeMessage = ""
                    }, 2000);
+                }else {
+                    store.state.registeMessage = result.message;
                 }
 
         }).catch(err=>{
             console.log(err);
-            
         })
 
 },
