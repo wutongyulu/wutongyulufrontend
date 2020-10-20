@@ -12,7 +12,7 @@
             <LoginForm>
               <a
                 slot="disanfangdenglu"
-                href="https://github.com/login/oauth/authorize?client_id=8f1215e906031a87e2bd&redirect_uri=http://localhost/callback&scope=user&state=1"
+                href="https://github.com/login/oauth/authorize?client_id=8f1215e906031a87e2bd&redirect_uri=http://localhost:8080/callback&scope=user&state=1"
               >
                 <img src="../assets/Img/Github.jpg" alt="使用Github登录" />
               </a>

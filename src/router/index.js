@@ -16,7 +16,7 @@ const routes = [
         path:"/createdBlog",
         component:CreatedBlog,
         meta:{
-            title:"createdBlog聚沙成塔嘛"
+            title:"createdBlog"
         }
     },
 {

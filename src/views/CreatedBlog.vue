@@ -31,13 +31,14 @@
                       class="titleText"
                       id="exampleInputTitle"
                       placeholder="输入标签..."
+                      v-model="document.title"
                     />
                   </el-col>
                   <el-col :xs="6" :sm="6" :md="6">
                     <select class="bt-fl">
                       <option value="Java">Java</option>
-                      <option value="Sql">Sql</option>
-                      <option value="Spring">Spring</option>
+                      <option value="Web">Web</option>
+                      <option value="其他">其他</option>
                     </select>
                   </el-col>
                 </el-row>
@@ -53,6 +54,7 @@
                     cols="30"
                     rows="15"
                     placeholder="这一路上走走停停顺着少年漂泊的痕迹..."
+                    v-model="document.textarea"
                   ></textarea>
                 </div>
 
@@ -62,7 +64,7 @@
                   </h4>
                 </el-col>
                 <el-col :xs="18" :sm="18" :md="18">
-                  <input type="text" class="titleText" id="exampleInputText" placeholder="输入标签..." />
+                  <input type="text" class="titleText" id="exampleInputText" placeholder="输入标签..." v-model="document.tag"/>
                 </el-col>
                 <el-col :xs="6" :sm="6" :md="6">
                   <button type="button" class="bt-ys bt-tjbq">添 加</button>
@@ -72,7 +74,7 @@
                     <small class="el-icon-collection-tag"></small>最近标签
                   </label>
                 </div>
-                <button type="submit" class="bt-tjwd bt-ys">提交文档</button>
+                <button type="submit" class="bt-tjwd bt-ys" @click="createBlog">提交文档</button>
               </form>
             </div>
           </div>
@@ -87,7 +89,21 @@
 
 <script>
 export default {
-  name: "createBlog"
+  name: "createBlog",
+  data:()=>{
+    return{
+    document:{
+      title:"",
+      textarea:"",
+      tag:""
+      }
+    }
+  },
+  methods:{
+    createBlog(){
+      this.$store.dispatch("createBlog",this.document)
+    }
+  }
 };
 </script>
 

@@ -11,7 +11,7 @@
       <el-col :xs="24" :sm="10" :md="10">
         <div class="newPageConten">
           <div class="newPageHead">
-            <a href class="newPageA newPageTitleA">
+            <a href="javascript:" class="newPageA newPageTitleA">
               <slot name="tilte"></slot>
             </a>
           </div>
@@ -37,7 +37,8 @@
             <slot name="Message"></slot>
           </div>
           <div class="bottomMessage">
-            <a href class="newPageA newPageAB">...</a>
+            <!-- <a href class="newPageA newPageAB">...</a> -->
+             <slot name="bottomA">...</slot>
           </div>
         </div>
       </el-col>
@@ -47,7 +48,10 @@
 
 <script>
 export default {
-  name: "PageMessageCard"
+  name: "PageMessageCard",
+  props:{
+    // itme2
+  }
 };
 </script>
 

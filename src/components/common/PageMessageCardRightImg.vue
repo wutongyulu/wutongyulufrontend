@@ -4,7 +4,7 @@
       <el-col :xs="24" :sm="10" :md="10">
         <div class="newPageConten">
           <div class="newPageHead">
-            <a href class="newPageA newPageTitleA">
+            <a href="javascript:" class="newPageA newPageTitleA">
               <slot name="tilte"></slot>
             </a>
           </div>
@@ -15,7 +15,7 @@
           </div>
           <div class="pageMessage">
             <span class="el-icon-chat-square" aria-hidden="true">
-              <a href class="newPageA">
+              <a href="javascript:"  class="newPageA">
                 <slot name="comment"></slot>留言
               </a>
             </span>
@@ -23,14 +23,14 @@
               <slot name="view"></slot>浏览
             </span>
             <span class="el-icon-folder" aria-hidden="true">
-              <a href class="newPageA">分类</a>
+              <a href="javascript:"  class="newPageA">分类</a>
             </span>
           </div>
           <div class="NewMessage">
             <slot name="Message"></slot>
           </div>
           <div class="bottomMessage">
-            <a href class="newPageA newPageAB">...</a>
+            <slot name="bottomA">...</slot>
           </div>
         </div>
       </el-col>
@@ -47,7 +47,10 @@
 
 <script>
 export default {
-  name: "PageMessageCard"
+  name: "PageMessageCard",
+   props:{
+    // itme2
+  }
 };
 </script>
 

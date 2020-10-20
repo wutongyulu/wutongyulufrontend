@@ -32,7 +32,7 @@
          {{$store.state.userDto.name}} <el-avatar :size="40" ></el-avatar>
           <div class="userMessageDiv">
             <div>个人中心</div>
-            <div>注销</div>
+            <div @click="logout">注销</div>
           </div>
         </div>
       </li>
@@ -43,7 +43,20 @@
 <script>
 export default {
   name: "Header",
-  methods: {}
+  methods: {
+    verifyUserById() {
+      //验证登录
+      console.log("验证登录");
+      this.$store.dispatch("verifyUserById");
+    },
+    logout(){
+      console.log("登出");
+      this.$store.dispatch("logout")
+    }
+  },
+  created(){
+    this.verifyUserById();
+  }
 };
 window.addEventListener("scroll", () => {
   var header = document.querySelector("header");
@@ -95,6 +108,7 @@ window.addEventListener("scroll", () => {
 }
 .userMessage:hover .userMessageDiv{
   display: block;
+  width: 80%;
 }
 .userMessage div div{
   width: 100%;
@@ -103,7 +117,7 @@ window.addEventListener("scroll", () => {
   color: rgb(128, 128, 128);
 }
 .userMessage:hover .userMessageDiv div{
-  padding: 15px;
+  padding: 10px;
   background: white;
   border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }

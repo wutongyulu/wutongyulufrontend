@@ -9,10 +9,10 @@
             </el-col>
             <el-col :xs="24" :sm="20" :md="12">
               <div class="row">
-                <h2 class>Test</h2>
+                <h2 class>{{$store.state.documentById.title}}</h2>
               </div>
               <div class="row">
-                <h4 class>Test</h4>
+                <h4 class>用户信息部分</h4>
               </div>
             </el-col>
             <el-col :xs="24" :sm="2" :md="6" class="hidden-xs-only">
@@ -28,7 +28,10 @@
         </el-col>
         <el-col :xs="24" :sm="20" :md="12">
           <!-- 文档 -->
-          <div class="Docm"></div>
+          <div class="Docm">
+            {{$store.state.documentById.description}}
+
+          </div>
           <!-- 标签 -->
           <div></div>
           <!-- 回复 -->

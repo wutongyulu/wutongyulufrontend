@@ -14,6 +14,9 @@ const store =  new Vuex.Store({
     state:{
         requestStatus:false,
         registeMessage:"",
+        document:[],
+        documentSize:10,
+        documentById:[],
     },
     getters,
     mutations,

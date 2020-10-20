@@ -1,6 +1,5 @@
 <template>
   <el-container>
-  
     <el-main>
       <!-- head图片区域 -->
       <el-row>
@@ -98,44 +97,54 @@
               <span class="el-icon-sunny"></span> New
             </h3>
           </div>
-          <PageMessageCardRightImg>
-            <!-- //标题 -->
-            <h3 slot="tilte">1</h3>
-            <!-- 更新时间 -->
-            <span slot="createtime">1</span>
-            <!-- 评论数 -->
-            <span slot="comment">1</span>
-            <!-- 点击数 -->
-            <span slot="view">1</span>
-            <!-- 内容 -->
-            <p slot="Message">123</p>
-            <!-- 图片 -->
-            <img
-              src="../assets/Img/BG3.jpg"
-              slot="img"
-              class="img-responsive"
-              alt="Responsive image"
-            />
-          </PageMessageCardRightImg>
-          <PageMessageCardLeftImg>
-            <!-- //标题 -->
-            <h3 slot="tilte">1</h3>
-            <!-- 更新时间 -->
-            <span slot="createtime">1</span>
-            <!-- 评论数 -->
-            <span slot="comment">1</span>
-            <!-- 点击数 -->
-            <span slot="view">1</span>
-            <!-- 内容 -->
-            <p slot="Message">123</p>
-            <!-- 图片 -->
-            <img
-              src="../assets/Img/BG3.jpg"
-              slot="img"
-              class="img-responsive"
-              alt="Responsive image"
-            />
-          </PageMessageCardLeftImg>
+          <div v-for="itme in $store.state.document">
+            <div v-for="itme2 in itme">
+              <PageMessageCardRightImg v-if="itme2.document_id%2 == 0">
+                <!-- //标题 -->
+                <h3 slot="tilte" @click="blogDocm(itme2.document_id)">{{itme2.title}}</h3>
+                <!-- 更新时间 -->
+                <span slot="createtime">{{itme2.gmt_modified}}</span>
+                <!-- 评论数 -->
+                <span slot="comment" >{{itme2.comment_count}}</span>
+                <!-- 点击数 -->
+                <span slot="view">{{itme2.view_count}}</span>
+                <!-- 内容 -->
+                <p slot="Message" @click="blogDocm(itme2.document_id)">{{itme2.description}}</p>
+                
+                <a href="javascript:" slot="bottomA"  @click="blogDocm(itme2.document_id)" class="newPageA newPageAB">...</a>
+                <!-- 图片 -->
+                <img
+                  src="../assets/Img/BG3.jpg"
+                  slot="img"
+                  class="img-responsive"
+                  alt="Responsive image"
+                  @click="blogDocm(itme2.document_id)"
+                />
+              </PageMessageCardRightImg>
+              <PageMessageCardLeftImg v-else>
+                <!-- //标题 -->
+                <h3 slot="tilte"  @click="blogDocm(itme2.document_id)" >{{itme2.title}}</h3>
+                <!-- 更新时间 -->
+                <span slot="createtime">{{itme2.gmt_modified}}</span>
+                <!-- 评论数 -->
+                <span slot="comment">{{itme2.comment_count}}</span>
+                <!-- 点击数 -->
+                <span slot="view">{{itme2.view_count}}</span>
+                <!-- 内容 -->
+                <p slot="Message"  @click="blogDocm(itme2.document_id)">{{itme2.description}} </p>
+
+                  <a href="javascript:" slot="bottomA"  @click="blogDocm(itme2.document_id)" class="newPageA newPageAB">...</a>
+                <!-- 图片 -->
+                  <img
+                  src="../assets/Img/BG3.jpg"
+                  slot="img"
+                  class="img-responsive"
+                  alt="Responsive image"
+                  @click="blogDocm(itme2.document_id)"
+                />
+              </PageMessageCardLeftImg>
+            </div>
+          </div>
         </el-col>
         <el-col :xs="24" :sm="2" :md="6" class="hidden-xs-only">
           <br />
@@ -144,26 +153,53 @@
 
       <el-row>
         <div id="newPagebutton">
-          <el-button type="danger" round>更多内容</el-button>
+          <el-button type="danger" round @click="getDocument">更多内容</el-button>
         </div>
       </el-row>
     </el-main>
- 
   </el-container>
 </template>
 
 <script>
-
 import PageMessageCardRightImg from "../components/common/PageMessageCardRightImg";
 import PageMessageCardLeftImg from "../components/common/PageMessageCardLeftImg";
 
 export default {
   name: "Home",
   components: {
-    
     PageMessageCardRightImg,
-    PageMessageCardLeftImg,
-  
+    PageMessageCardLeftImg
+  },
+  methods: {
+    getDocument: function() {
+      console.log("getDocument");
+
+      this.$store.dispatch("getDocument");
+    },
+    blogDocm: function(id) {
+      this.$store.dispatch("getDocumentById", id);
+    }
+  },
+  //箭头函数不能使用
+  created: function() {
+    //在页面加载时读取sessionStorage里的状态信息
+    if (sessionStorage.getItem("store")) {
+      this.$store.replaceState(
+        Object.assign(
+          {},
+          this.$store.state,
+          JSON.parse(sessionStorage.getItem("store"))
+        )
+      );
+    } else {
+      this.getDocument();
+    }
+
+    //在页面刷新时将vuex里的信息保存到sessionStorage里
+    window.addEventListener("beforeunload", () => {
+      sessionStorage.removeItem("store");
+      sessionStorage.setItem("store", JSON.stringify(this.$store.state));
+    });
   }
 };
 </script>
@@ -325,6 +361,4 @@ export default {
   border-bottom: rgba(102, 102, 102, 0.2) dashed 1px;
   padding-bottom: 10px;
 }
-
-
 </style>
