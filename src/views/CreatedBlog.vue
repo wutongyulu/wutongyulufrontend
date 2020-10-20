@@ -30,14 +30,14 @@
                       type="text"
                       class="titleText"
                       id="exampleInputTitle"
-                      placeholder="输入标签..."
+                      placeholder="输入标题..."
                     />
                   </el-col>
                   <el-col :xs="6" :sm="6" :md="6">
                     <select class="bt-fl">
-                      <option value="Java">Java</option>
-                      <option value="Sql">Sql</option>
-                      <option value="Spring">Spring</option>
+                      <option value="0">Java</option>
+                      <option value="1">Sql</option>
+                      <option value="2">Spring</option>
                     </select>
                   </el-col>
                 </el-row>
@@ -46,14 +46,7 @@
                   <h4 for="textarea">
                     <small class="el-icon-message"></small> 内容编写
                   </h4>
-                  <textarea
-                    name="textarea"
-                    id="textarea"
-                    class="textarea"
-                    cols="30"
-                    rows="15"
-                    placeholder="这一路上走走停停顺着少年漂泊的痕迹..."
-                  ></textarea>
+                    <mavonEditor/>
                 </div>
 
                 <el-col>

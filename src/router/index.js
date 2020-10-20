@@ -16,7 +16,7 @@ const routes = [
         path:"/createdBlog",
         component:CreatedBlog,
         meta:{
-            title:"createdBlog聚沙成塔嘛"
+            title:"createdBlog"
         }
     },
 {
@@ -24,7 +24,7 @@ const routes = [
     path:"/blogDocm",
     component:BlogDocm,
     meta:{
-        title:"BlogDocm 这些你用的上吧！"
+        title:"BlogDocm "
     }
 },
 
@@ -34,7 +34,7 @@ const routes = [
         path:"/registe",
         component:Registe,
         meta:{
-            title:"Registe-你要入伙?！"
+            title:"Registe-！"
         }
 
     },
@@ -44,7 +44,7 @@ const routes = [
         path:"/login",
         component:Login,
         meta:{
-            title:"Login-登录！"
+            title:"Login-登录"
         }
 
     },
